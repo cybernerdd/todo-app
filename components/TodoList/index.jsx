@@ -1,3 +1,4 @@
+import moment from 'moment';
 import { useEffect, useState } from 'react';
 import { StatusBar } from 'react-native';
 import { StyleSheet, View, Text, FlatList } from 'react-native';
@@ -41,12 +42,83 @@ const TodoList = () => {
       <View style={styles.headerContainer}>
         <Text
           style={styles.filters}
-          onPress={() => setIsNewTodoModalOpen(true)}>
+          onPress={() => setIsNewTodoModalOpen(true)}
+        >
           Add New TODO
         </Text>
         <Text style={styles.filters} onPress={() => setIsFiltersOpen(true)}>
           Filters
         </Text>
+      </View>
+
+      <View style={{ marginBottom: 20, marginTop: 10 }}>
+        <Text style={{ marginBottom: 10 }}>Applied Filters</Text>
+        <View style={{ flexDirection: 'row' }}>
+          {filters.showCompleted !== null && (
+            <View
+              style={{
+                padding: 5,
+                paddingVertical: 10,
+                backgroundColor: '#007AFF',
+                color: 'white',
+                borderRadius: 50,
+                minWidth: 50,
+                marginRight: 15,
+              }}
+            >
+              <Text
+                style={{
+                  color: 'white',
+                  textAlign: 'center',
+                }}
+              >
+                {filters.showCompleted === null
+                  ? 'All'
+                  : filters.showCompleted === false
+                  ? 'Remaining'
+                  : 'Completed'}
+              </Text>
+            </View>
+          )}
+
+          {filters.filterDueDate && (
+            <View
+              style={{
+                padding: 5,
+                paddingVertical: 10,
+                backgroundColor: '#007AFF',
+                color: 'white',
+                borderRadius: 50,
+                minWidth: 50,
+                marginRight: 15,
+              }}
+            >
+              <Text style={{ color: 'white', textAlign: 'center' }}>
+                {moment(filters.filterDueDate).format('DD-MM-YYYY')}
+              </Text>
+            </View>
+          )}
+
+          {filters.filterCategory && (
+            <View
+              style={{
+                padding: 5,
+                paddingVertical: 10,
+                backgroundColor: '#007AFF',
+                color: 'white',
+                borderRadius: 50,
+                minWidth: 50,
+                marginRight: 15,
+              }}
+            >
+              <Text style={{ color: 'white', textAlign: 'center' }}>
+                {filters.filterCategory === null
+                  ? 'All'
+                  : filters.filterCategory}
+              </Text>
+            </View>
+          )}
+        </View>
       </View>
 
       <Text style={{ fontWeight: 'bold', fontSize: 18 }}>All TODO's</Text>
