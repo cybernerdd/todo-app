@@ -9,6 +9,20 @@ import moment from 'moment';
 import { ICategory, IFilters, ITodo } from '../../interfaces';
 import { RootState } from '../../store/store';
 
+/**
+ * Component that applies filters
+ *
+ * @component
+ * @example
+ *
+ * return <Filters filters={filters} setFilters={setFilters} setTodos={setTodos},
+   setIsFiltersOpen={setIsFiltersOpen}/>
+ *
+ * @returns {ReactElement}
+ * @author Faizan Ahmad <a-f.a@outlook.com>
+ * @version 1.0.0
+ */
+
 const Filters = ({
   filters,
   setFilters,
@@ -85,8 +99,7 @@ const Filters = ({
       isVisible={true}
       style={styles.container}
       overlayStyle={{ width: '90%' }}
-      onBackdropPress={() => setIsFiltersOpen(false)}
-    >
+      onBackdropPress={() => setIsFiltersOpen(false)}>
       <View>
         {/* status filters */}
         <View>
@@ -96,14 +109,12 @@ const Filters = ({
               fontSize: 18,
               marginLeft: '5%',
               marginBottom: 15,
-            }}
-          >
+            }}>
             Filter by Status
           </Text>
 
           <View
-            style={{ flexDirection: 'row', justifyContent: 'space-around' }}
-          >
+            style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
             <TouchableOpacity
               style={[
                 styles.filterOptionButton,
@@ -113,8 +124,7 @@ const Filters = ({
               ]}
               onPress={() =>
                 setFilters((prev) => ({ ...prev, showCompleted: null }))
-              }
-            >
+              }>
               <Text style={styles.filterOptionText}>All</Text>
             </TouchableOpacity>
             <TouchableOpacity
@@ -126,8 +136,7 @@ const Filters = ({
               ]}
               onPress={() =>
                 setFilters((prev) => ({ ...prev, showCompleted: false }))
-              }
-            >
+              }>
               <Text style={styles.filterOptionText}>Remaining</Text>
             </TouchableOpacity>
             <TouchableOpacity
@@ -139,8 +148,7 @@ const Filters = ({
               ]}
               onPress={() =>
                 setFilters((prev) => ({ ...prev, showCompleted: true }))
-              }
-            >
+              }>
               <Text style={styles.filterOptionText}>Completed</Text>
             </TouchableOpacity>
           </View>
@@ -155,8 +163,7 @@ const Filters = ({
               marginLeft: '5%',
               marginTop: 10,
               marginBottom: 15,
-            }}
-          >
+            }}>
             Filter by Date
           </Text>
           <View style={{ paddingHorizontal: 10 }}>
@@ -167,8 +174,7 @@ const Filters = ({
                   backgroundColor: '#00BFFF',
                 },
               ]}
-              onPress={() => setDatePickerVisibility(true)}
-            >
+              onPress={() => setDatePickerVisibility(true)}>
               <Text style={styles.filterOptionText}>
                 {filters.filterDueDate ? filters.filterDueDate : 'Due Date'}
               </Text>
@@ -185,8 +191,7 @@ const Filters = ({
               fontSize: 18,
               marginLeft: '5%',
               marginTop: 10,
-            }}
-          >
+            }}>
             Filter by Category
           </Text>
           <View style={{ paddingHorizontal: 10 }}>
@@ -194,8 +199,7 @@ const Filters = ({
               selectedValue={filters.filterCategory}
               onValueChange={(value) =>
                 setFilters((prev) => ({ ...prev, filterCategory: value }))
-              }
-            >
+              }>
               {categories.map((item: ICategory) => (
                 <Picker.Item
                   key={item.id}
@@ -210,14 +214,12 @@ const Filters = ({
         <View style={styles.buttonContainer}>
           <TouchableOpacity
             style={styles.clearButton}
-            onPress={handleClearFilters}
-          >
+            onPress={handleClearFilters}>
             <Text style={styles.clearButtonText}>Clear</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.applyButton}
-            onPress={handleApplyFilters}
-          >
+            onPress={handleApplyFilters}>
             <Text style={styles.applyButtonText}>Apply</Text>
           </TouchableOpacity>
         </View>

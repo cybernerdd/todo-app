@@ -10,6 +10,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import { IAddTodoProps, ICategory } from '../../interfaces';
 import { RootState } from '../../store/store';
 
+/**
+ * Component that shows modal to add todos
+ *
+ * @component
+ * @example
+ *
+ * return <AddTodo setIsModalVisible={setIsModalVisible} />
+ *
+ * @returns {ReactElement}
+ * @author Faizan Ahmad <a-f.a@outlook.com>
+ * @version 1.0.0
+ */
+
 const AddTodo = ({ setIsModalVisible }: IAddTodoProps) => {
   const [todoText, setTodoText] = useState('');
   const [todoDescription, setTodoDescription] = useState('');
@@ -59,13 +72,11 @@ const AddTodo = ({ setIsModalVisible }: IAddTodoProps) => {
 
   return (
     <KeyboardAvoidingView
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-    >
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
       <Overlay
         isVisible={true}
         onBackdropPress={() => setIsModalVisible(false)}
-        overlayStyle={{ width: '90%' }}
-      >
+        overlayStyle={{ width: '90%' }}>
         <View>
           <Input
             placeholder='Enter Todo'
@@ -82,8 +93,7 @@ const AddTodo = ({ setIsModalVisible }: IAddTodoProps) => {
           </Text>
           <Picker
             selectedValue={todoCategory}
-            onValueChange={(itemValue, itemIndex) => setTodoCategory(itemValue)}
-          >
+            onValueChange={(itemValue) => setTodoCategory(itemValue)}>
             {categories.map((item: ICategory) => (
               <Picker.Item
                 key={item.id}
@@ -98,16 +108,14 @@ const AddTodo = ({ setIsModalVisible }: IAddTodoProps) => {
               flexDirection: 'row',
               alignItems: 'center',
               marginBottom: 20,
-            }}
-          >
+            }}>
             <Text
               style={{
                 fontSize: 16,
                 fontWeight: 'bold',
                 marginLeft: '5%',
                 flex: 1,
-              }}
-            >
+              }}>
               Due Date:
             </Text>
             <Text
@@ -117,8 +125,7 @@ const AddTodo = ({ setIsModalVisible }: IAddTodoProps) => {
                 marginRight: '5%',
                 color: selectedDate ? '#00BFFF' : 'black',
               }}
-              onPress={showDatePicker}
-            >
+              onPress={showDatePicker}>
               {selectedDate
                 ? moment(selectedDate).format('YYYY-MM-DD')
                 : 'Select Date'}

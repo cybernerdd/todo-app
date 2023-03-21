@@ -7,6 +7,19 @@ import { Badge } from 'react-native-elements';
 import { removeTodo, toggleTodo } from '../../store/features/todoSlice';
 import { ITodoItemProps } from '../../interfaces';
 
+/**
+ * Component that shows single todo item
+ *
+ * @component
+ * @example
+ *
+ * return <TodoItem item={item} />
+ *
+ * @returns {ReactElement}
+ * @author Faizan Ahmad <a-f.a@outlook.com>
+ * @version 1.0.0
+ */
+
 const TodoItem = ({ item }: ITodoItemProps) => {
   const dispatch = useDispatch();
 
@@ -14,8 +27,7 @@ const TodoItem = ({ item }: ITodoItemProps) => {
     <View style={styles.todo}>
       <TouchableOpacity
         style={styles.checkbox}
-        onPress={() => dispatch(toggleTodo(item.id))}
-      >
+        onPress={() => dispatch(toggleTodo(item.id))}>
         {item.isCompleted ? (
           <Text style={styles.checkmark}>✓</Text>
         ) : (
@@ -27,8 +39,7 @@ const TodoItem = ({ item }: ITodoItemProps) => {
           style={[
             styles.todoText,
             item.isCompleted && styles.completedTodoText,
-          ]}
-        >
+          ]}>
           {item.text}
         </Text>
         {item.description && (
@@ -47,8 +58,7 @@ const TodoItem = ({ item }: ITodoItemProps) => {
       </View>
       <TouchableOpacity
         onPress={() => dispatch(removeTodo(item.id))}
-        style={styles.deleteButton}
-      >
+        style={styles.deleteButton}>
         <Icon name='cross' size={24} color='#FF5722' />
       </TouchableOpacity>
     </View>

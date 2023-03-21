@@ -2,6 +2,19 @@ import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Filters } from '../../interfaces';
 
+/**
+ * Component that lists the applied filters
+ *
+ * @component
+ * @example
+ *
+ * return <ShowFilters filters={filters} onClearFilters={onClearFilters} />
+ *
+ * @returns {ReactElement}
+ * @author Faizan Ahmad <a-f.a@outlook.com>
+ * @version 1.0.0
+ */
+
 const ShowFilters = ({
   filters,
   onClearFilters,

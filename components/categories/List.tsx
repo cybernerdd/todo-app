@@ -11,6 +11,19 @@ import { removeCategory } from '../../store/features/categoriesSlice';
 import { RootState } from '../../store/store';
 import { ICategory } from '../../interfaces';
 
+/**
+ * Component for listing the categories
+ *
+ * @component
+ * @example
+ *
+ * return <CategoriesList />
+ *
+ * @returns {ReactElement}
+ * @author Faizan Ahmad <a-f.a@outlook.com>
+ * @version 1.0.0
+ */
+
 const CategoriesList = () => {
   const dispatch = useDispatch();
   const categories = useSelector(
@@ -27,8 +40,7 @@ const CategoriesList = () => {
         <Text style={styles.categoryName}>{item.label}</Text>
         <TouchableOpacity
           onPress={() => handleDelete(item.id)}
-          style={styles.deleteButton}
-        >
+          style={styles.deleteButton}>
           <Text style={styles.deleteButtonText}>Delete</Text>
         </TouchableOpacity>
       </View>

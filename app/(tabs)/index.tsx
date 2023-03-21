@@ -10,6 +10,19 @@ import Filters from '../../components/filters';
 import TodoItem from '../../components/todos/TodoItem';
 import ShowFilters from '../../components/filters/ShowFilters';
 
+/**
+ * Screen that shows All the Todos
+ *
+ * @screen
+ * @example
+ *
+ * return <TODOS />
+ *
+ * @returns {ReactElement}
+ * @author Faizan Ahmad <a-f.a@outlook.com>
+ * @version 1.0.0
+ */
+
 export default function TODOS() {
   const todos: ITodo[] = useSelector((state: RootState) => state.todos.todos);
   const [filters, setFilters] = useState({
@@ -55,8 +68,7 @@ export default function TODOS() {
       <View style={styles.header}>
         <Text
           style={styles.filters}
-          onPress={() => setIsNewTodoModalOpen(true)}
-        >
+          onPress={() => setIsNewTodoModalOpen(true)}>
           Add New TODO
         </Text>
         <Text style={styles.filters} onPress={() => setIsFiltersOpen(true)}>

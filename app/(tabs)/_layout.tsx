@@ -4,9 +4,6 @@ import { useColorScheme } from 'react-native';
 
 import Colors from '../../constants/Colors';
 
-/**
- * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
- */
 function TabBarIcon(props: {
   name: React.ComponentProps<typeof FontAwesome>['name'];
   color: string;
@@ -21,8 +18,7 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-      }}
-    >
+      }}>
       <Tabs.Screen
         name='index'
         options={{
@@ -31,7 +27,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name='two'
+        name='CategoriesScreen'
         options={{
           title: 'Categories',
           tabBarIcon: ({ color }) => <TabBarIcon name='folder' color={color} />,

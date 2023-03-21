@@ -4,6 +4,19 @@ import { addCategory } from '../../store/features/categoriesSlice';
 import { TextInput, Button, View, StyleSheet } from 'react-native';
 import { RootState } from '../../store/store';
 
+/**
+ * Component for the Creating Category
+ *
+ * @component
+ * @example
+ *
+ * return <CategoryForm />
+ *
+ * @returns {ReactElement}
+ * @author Faizan Ahmad <a-f.a@outlook.com>
+ * @version 1.0.0
+ */
+
 const CategoryForm = () => {
   const [categoryName, setCategoryName] = useState('');
   const dispatch = useDispatch();
